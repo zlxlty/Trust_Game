@@ -31,8 +31,8 @@ def Both_Cheat(bot_a, bot_b, score_configs):
 
 
 def Run(bot_A, bot_B):
-    dis_a = bot_A.strategy()
-    dis_b = bot_B.strategy()
+    dis_a = bot_A.strategy(bot_B.pos)
+    dis_b = bot_B.strategy(bot_A.pos)
 
     if (dis_a > dis_b):
         Single_Cheat(bot_A, bot_B, score_configs)

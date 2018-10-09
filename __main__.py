@@ -11,24 +11,26 @@ each_game_num = 20
 
 def main():
     players = []
-    for i in range(total_player_num):
-        bot = Bot(i, total_player_num)
+    for i in range(10):
+        bot = Follower(i, 20)
         players.append(bot)
-
+    for i in range(10):
+        bot = Bot(i+10, 20)
+        players.append(bot)
     for i in range(each_game_num):
         for player_a in players:
             for player_b in players:
                 if (player_a.pos != player_b.pos):
                     game.Run(player_a, player_b)
 
-    for i in range(total_player_num):
+    for i in range(20):
         print("Player_%d: %d" % (players[i].pos, players[i].score))
 
-    players.sort(key=lambda x: x.score)
+    players.sort(key=lambda x: x.score, reverse=True)
 
     print("----------------")
-    for i in range(total_player_num):
+    for i in range(20):
         print("Player_%d: %d" % (players[i].pos, players[i].score))
-    players[1].print_opp_record()
+    players[12].print_opp_record()
 
 main()

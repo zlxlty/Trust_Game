@@ -13,7 +13,7 @@ class Bot(object):
                 self.my_logs[str(i)] = []
 
 
-    def strategy(self):
+    def strategy(self, opp_pos):
         return np.random.randint(2)
         #TODO different strategy can be added here
 
@@ -23,3 +23,10 @@ class Bot(object):
     def print_opp_record(self):
         for k,v in self.opp_logs.items():
             print('Player_%s: %s' % (k, str(v)))
+
+class Follower(Bot):
+    def strategy(self, opp_pos):
+        if self.opp_logs[str(opp_pos)]:
+            return self.opp_logs[str(opp_pos)][-1]
+        else:
+            return 0
