@@ -1,7 +1,6 @@
-"""
-Coding: UTF-8
-Author: SkyL
-"""
+# -*- coding: utf-8 -*-
+# -*- author: SkyL  -*-
+
 from config import *
 from player import *
 import game
