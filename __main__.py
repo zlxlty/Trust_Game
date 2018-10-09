@@ -4,6 +4,7 @@
 from config import *
 from player import *
 import game
+from utils.sort_player import *
 
 total_player_num = 10
 each_game_num = 20
@@ -21,8 +22,13 @@ def main():
                     game.Run(player_a, player_b)
 
     for i in range(total_player_num):
-        print("Player_%d: %d" % (i, players[i].score))
+        print("Player_%d: %d" % (players[i].pos, players[i].score))
 
+    players.sort(key=lambda x: x.score)
+
+    print("----------------")
+    for i in range(total_player_num):
+        print("Player_%d: %d" % (players[i].pos, players[i].score))
     players[1].print_opp_record()
 
 main()
