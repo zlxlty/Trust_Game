@@ -5,6 +5,20 @@ score_configs = {
     'single_trust' : -1,
     'both_trust' : 2,
     'both_cheat' : 0,
+
+}
+
+players_configs = {
+    'Bot': 5,
+    'Follower': 5,
+    'Gambler': 5,
+
+}
+
+game_configs = {
+    'total_player_num': 15,
+    'each_game_num': 10,
+    
 }
 
 if __name__ == '__main__':

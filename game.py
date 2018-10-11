@@ -29,16 +29,58 @@ def Both_Cheat(bot_a, bot_b, score_configs):
     bot_b.my_logs[str(bot_a.pos)].append(1)
     bot_b.opp_logs[str(bot_a.pos)].append(1)
 
+def Load_Players(players):
 
-def Run(bot_A, bot_B):
-    dis_a = bot_A.strategy(bot_B.pos)
-    dis_b = bot_B.strategy(bot_A.pos)
+    for i in range(players_configs['Bot']):
 
-    if (dis_a > dis_b):
-        Single_Cheat(bot_A, bot_B, score_configs)
-    elif (dis_b > dis_a):
-        Single_Cheat(bot_B, bot_A, score_configs)
-    elif (dis_a == dis_b and dis_a == 1):
-        Both_Cheat(bot_A, bot_B, score_configs)
-    elif (dis_a == dis_b and dis_a == 0):
-        Both_Trust(bot_A, bot_B, score_configs)
+        player = Bot(len(players), game_configs['total_player_num'])
+        players.append(player)
+
+    for i in range(players_configs['Follower']):
+        player = Follower(len(players), game_configs['total_player_num'])
+        players.append(player)
+
+    for i in range(players_configs['Gambler']):
+        player = Gambler(len(players), game_configs['total_player_num'])
+        players.append(player)
+
+    return players
+
+def Sort_Players(players):
+    players.sort(key=lambda x: x.score, reverse=True)
+    return players
+
+def Print_Opp_Logs(players):
+    for player in players:
+        print("--------opp--------")
+        print(player.pos)
+        player.print_opp_logs()
+
+def Print_My_Logs(players):
+    for player in players:
+        print("--------my---------")
+        print(player.pos)
+        player.print_my_logs()
+
+def Print_Scores(players):
+    for i in range(game_configs['total_player_num']):
+        players[i].print_score()
+
+def Run(players):
+
+    for i in range(game_configs['each_game_num']):
+        for player_a in players:
+            for player_b in players:
+                if (player_a.pos != player_b.pos):
+
+                    dis_a = player_a.strategy(player_b.pos)
+                    dis_b = player_b.strategy(player_a.pos)
+
+                    if (dis_a > dis_b):
+                        Single_Cheat(player_a, player_b, score_configs)
+                    elif (dis_b > dis_a):
+                        Single_Cheat(player_b, player_a, score_configs)
+                    elif (dis_a == dis_b and dis_a == 1):
+                        Both_Cheat(player_a, player_b, score_configs)
+                    elif (dis_a == dis_b and dis_a == 0):
+                        Both_Trust(player_a, player_b, score_configs)

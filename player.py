@@ -18,9 +18,13 @@ class Bot(object):
         #TODO different strategy can be added here
 
     def print_score(self):
-        print("Player_%d: %d" % self.score)
+        print("Player_%d: %d" % (self.pos, self.score))
 
-    def print_opp_record(self):
+    def print_my_logs(self):
+        for k,v in self.my_logs.items():
+            print('Player_%s: %s' % (k, str(v)))
+
+    def print_opp_logs(self):
         for k,v in self.opp_logs.items():
             print('Player_%s: %s' % (k, str(v)))
 
@@ -30,3 +34,18 @@ class Follower(Bot):
             return self.opp_logs[str(opp_pos)][-1]
         else:
             return 0
+
+class Gambler(Bot):
+    def strategy(self, opp_pos):
+        if 1 in self.opp_logs[str(opp_pos)]:
+            return 1
+        else:
+            return 0
+
+class Pink(Bot):
+    def strategy(self, opp_pos):
+        return 0
+
+class Black(Bot):
+    def strategy(self, opp_pos):
+        return 1
