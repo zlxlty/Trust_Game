@@ -18,8 +18,6 @@ def main():
     # Print all the loggings of opponents
     game.Print_Opp_Logs(players)
 
-
-
     game.Print_My_Logs(players)
 
     players = game.Sort_Players(players)
