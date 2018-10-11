@@ -1,5 +1,6 @@
 from tg_config import *
 from tg_player import *
+import random
 
 
 def First_Cheat(bot_a, bot_b, score_configs):
@@ -40,6 +41,7 @@ def Load_Players(players):
     return players
 
 def Sort_Players(players):
+    random.shuffle(players)
     players.sort(key=lambda x: x.score, reverse=True)
     return players
 
@@ -58,6 +60,36 @@ def Print_My_Logs(players):
 def Print_Scores(players):
     for i in range(game_configs['total_player_num']):
         players[i].print_score()
+
+def Clear_All_logs(players):
+
+    for player in players:
+        player.score = 0
+        player.opp_logs = {}
+        player.my_logs = {}
+
+        for i in range(game_configs['total_player_num']):
+            if i != player.pos:
+                player.opp_logs[str(i)] = []
+                player.my_logs[str(i)] = []
+    return players
+
+def Update(players):
+
+    players = Sort_Players(players)
+
+    update_pos = []
+
+    for i in range(game_configs['update_player_num']):
+        temp_loser = players.pop()
+        update_pos.append(temp_loser.pos)
+
+    temp_winner = players[0].__class__.__name__
+    for i in range(game_configs['update_player_num']):
+        player = eval(temp_winner)(update_pos[i], game_configs['total_player_num'])
+        players.append(player)
+
+    return players
 
 def Run(players):
 

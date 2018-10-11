@@ -17,10 +17,17 @@ players_configs = {
 
 }
 
+
+
+total_num = 0
+for v in players_configs.values():
+    total_num += v
+
 game_configs = {
-    'total_player_num': 25,
+    'total_player_num': total_num,
     'each_game_num': 10,
-    
+    'update_player_num': 5
+
 }
 
 if __name__ == '__main__':

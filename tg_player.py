@@ -18,7 +18,7 @@ class Bot(object):
         #TODO different strategy can be added here
 
     def print_score(self):
-        print("Player_%d: %d" % (self.pos, self.score))
+        print("Player_%d (%s): %d" % (self.pos, self.__class__.__name__, self.score))
 
     def print_my_logs(self):
         for k,v in self.my_logs.items():

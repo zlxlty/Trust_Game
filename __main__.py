@@ -12,18 +12,21 @@ def main():
 
     players = tg_game.Load_Players(players)
 
-    # Run the game between every two players
-    tg_game.Run(players)
+    for i in range(10):
+        # Run the game between every two players
+        tg_game.Run(players)
 
-    # Print all the loggings of opponents
-    tg_game.Print_Opp_Logs(players)
+        players = tg_game.Sort_Players(players)
 
-    tg_game.Print_My_Logs(players)
+        print("--------------%d---------------" % (i+1))
 
-    players = tg_game.Sort_Players(players)
+        tg_game.Print_Scores(players)
 
-    print("----------------")
+        players = tg_game.Update(players)
 
-    tg_game.Print_Scores(players)
+        players = tg_game.Clear_All_logs(players)
+
+        print("--------------%d---------------\n" % (i+1))
+
 
 main()
