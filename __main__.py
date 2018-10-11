@@ -15,6 +15,7 @@ def main():
     # Run the game between every two players
     game.Run(players)
 
+    # Print all the loggings between players
     game.Print_Opp_Logs(players)
 
     game.Print_My_Logs(players)
