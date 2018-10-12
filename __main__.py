@@ -4,8 +4,6 @@
 import tg_game
 from tg_config import *
 
-__version__ = '1.3.0'
-
 def main():
 
     players = []
