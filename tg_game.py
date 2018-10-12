@@ -5,30 +5,30 @@ import random
 
 def First_Cheat(bot_a, bot_b, score_configs):
     bot_a.score += score_configs['single_cheat']
-    bot_a.my_logs[str(bot_b.pos)].append(1)
-    bot_a.opp_logs[str(bot_b.pos)].append(0)
+    bot_a.my_logs[str(bot_b.pos)].append(score_configs['CHEAT'])
+    bot_a.opp_logs[str(bot_b.pos)].append(score_configs['TRUST'])
 
     bot_b.score += score_configs['single_trust']
-    bot_b.my_logs[str(bot_a.pos)].append(0)
-    bot_b.opp_logs[str(bot_a.pos)].append(1)
+    bot_b.my_logs[str(bot_a.pos)].append(score_configs['TRUST'])
+    bot_b.opp_logs[str(bot_a.pos)].append(score_configs['CHEAT'])
 
 def Both_Trust(bot_a, bot_b, score_configs):
     bot_a.score += score_configs['both_trust']
-    bot_a.my_logs[str(bot_b.pos)].append(0)
-    bot_a.opp_logs[str(bot_b.pos)].append(0)
+    bot_a.my_logs[str(bot_b.pos)].append(score_configs['TRUST'])
+    bot_a.opp_logs[str(bot_b.pos)].append(score_configs['TRUST'])
 
     bot_b.score += score_configs['both_trust']
-    bot_b.my_logs[str(bot_a.pos)].append(0)
-    bot_b.opp_logs[str(bot_a.pos)].append(0)
+    bot_b.my_logs[str(bot_a.pos)].append(score_configs['TRUST'])
+    bot_b.opp_logs[str(bot_a.pos)].append(score_configs['TRUST'])
 
 def Both_Cheat(bot_a, bot_b, score_configs):
     bot_a.score += score_configs['both_cheat']
-    bot_a.my_logs[str(bot_b.pos)].append(1)
-    bot_a.opp_logs[str(bot_b.pos)].append(1)
+    bot_a.my_logs[str(bot_b.pos)].append(score_configs['CHEAT'])
+    bot_a.opp_logs[str(bot_b.pos)].append(score_configs['CHEAT'])
 
     bot_b.score += score_configs['both_cheat']
-    bot_b.my_logs[str(bot_a.pos)].append(1)
-    bot_b.opp_logs[str(bot_a.pos)].append(1)
+    bot_b.my_logs[str(bot_a.pos)].append(score_configs['CHEAT'])
+    bot_b.opp_logs[str(bot_a.pos)].append(score_configs['CHEAT'])
 
 def Load_Players(players):
 
@@ -105,7 +105,7 @@ def Run(players):
                         First_Cheat(player_a, player_b, score_configs)
                     elif (dis_b > dis_a):
                         First_Cheat(player_b, player_a, score_configs)
-                    elif (dis_a == dis_b and dis_a == 1):
+                    elif (dis_a == dis_b and dis_a == score_configs['CHEAT']):
                         Both_Cheat(player_a, player_b, score_configs)
-                    elif (dis_a == dis_b and dis_a == 0):
+                    elif (dis_a == dis_b and dis_a == score_configs['TRUST']):
                         Both_Trust(player_a, player_b, score_configs)

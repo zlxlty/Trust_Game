@@ -1,6 +1,6 @@
 score_configs = {
     'CHEAT' : 1,
-    'TRUST' : 0,
+    'TRUST' : -1,
     'single_cheat' : 3,
     'single_trust' : -1,
     'both_trust' : 2,
@@ -26,7 +26,9 @@ for v in players_configs.values():
 game_configs = {
     'total_player_num': total_num,
     'each_game_num': 10,
-    'update_player_num': 5
+    'update_player_num': 5,
+    'mistake_prob': 5,
+    'total_rounds': 20,
 
 }
 

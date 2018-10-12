@@ -2,6 +2,7 @@
 # -*- author: SkyL  -*-
 
 import tg_game
+from tg_config import *
 
 # total_player_num = 15
 # each_game_num = 20
@@ -12,7 +13,7 @@ def main():
 
     players = tg_game.Load_Players(players)
 
-    for i in range(10):
+    for i in range(game_configs['total_rounds']):
         # Run the game between every two players
         tg_game.Run(players)
 
