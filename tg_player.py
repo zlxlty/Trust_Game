@@ -45,9 +45,28 @@ class Follower(Bot):
 
     @random_mistake
     def strategy(self, opp_pos):
-        if self.opp_logs[str(opp_pos)]:
-            return self.opp_logs[str(opp_pos)][-1]
+
+        opp_log = self.opp_logs[str(opp_pos)]
+
+        if opp_log:
+            return opp_log[-1]
         else:
+            return -1
+
+class Follower_2(Bot):
+
+    @random_mistake
+    def strategy(self, opp_pos):
+
+        opp_log = self.opp_logs[str(opp_pos)]
+
+        try:
+            if opp_log[-1] == opp_log[-2] and opp_log[-1] == 1:
+                return 1
+            else:
+                return -1
+
+        except IndexError:
             return -1
 
 class Gambler(Bot):
@@ -71,12 +90,34 @@ class Black(Bot):
     def strategy(self, opp_pos):
         return 1
 
+class Single_Mind(Bot):
 
+    @random_mistake
+    def strategy(self, opp_pos):
 
-if __name__ == '__main__':
+        opp_log = self.opp_logs[str(opp_pos)]
+        my_log = self.my_logs[str(opp_pos)]
 
-    b = Black(1,1)
+        try:
+            if opp_log[-1] == -1:
+                return my_log[-1]
+            else:
+                return -1 * my_log[-1]
 
-    for i in range(100):
+        except IndexError:
+            return -1
 
-        print(b.strategy(1))
+class Sherlock(Bot):
+
+    @random_mistake
+    def strategy(self, opp_pos):
+
+        trial = [-1, 1, -1, -1]
+        opp_log = self.opp_logs[str(opp_pos)]
+
+        if len(opp_log) < 4:
+            return trial[len(opp_log)]
+        elif 1 in opp_log:
+            return opp_log[-1]
+        else:
+            return 1

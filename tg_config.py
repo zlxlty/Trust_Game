@@ -9,11 +9,14 @@ score_configs = {
 }
 
 players_configs = {
-    'Bot': 5,
-    'Follower': 5,
-    'Gambler': 5,
-    'Pink': 5,
-    'Black': 5,
+    'Bot': 4,
+    'Follower': 3,
+    'Gambler': 3,
+    'Pink': 3,
+    'Follower_2': 3,
+    'Black': 3,
+    'Single_Mind': 3,
+    'Sherlock': 3,
 
 }
 
@@ -27,11 +30,7 @@ game_configs = {
     'total_player_num': total_num,
     'each_game_num': 10,
     'update_player_num': 5,
-    'mistake_prob': 5,
-    'total_rounds': 20,
+    'mistake_prob': 0,
+    'total_rounds': 10,
 
 }
-
-if __name__ == '__main__':
-    for k,v in score_configs.items():
-        print(str(k)+":\t"+str(v))

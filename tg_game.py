@@ -96,7 +96,8 @@ def Run(players):
     for i in range(game_configs['each_game_num']):
         for player_a in players:
             for player_b in players:
-                if (player_a.pos != player_b.pos):
+                if (player_a.pos != player_b.pos and \
+                len(player_a.opp_logs[str(player_b.pos)]) < game_configs['each_game_num']):
 
                     dis_a = player_a.strategy(player_b.pos)
                     dis_b = player_b.strategy(player_a.pos)

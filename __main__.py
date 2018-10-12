@@ -4,8 +4,7 @@
 import tg_game
 from tg_config import *
 
-# total_player_num = 15
-# each_game_num = 20
+__version__ = '1.3.0'
 
 def main():
 
@@ -22,6 +21,8 @@ def main():
         print("--------------%d---------------" % (i+1))
 
         tg_game.Print_Scores(players)
+
+        # tg_game.Print_My_Logs(players)
 
         players = tg_game.Update(players)
 
