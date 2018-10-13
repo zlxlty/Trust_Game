@@ -61,7 +61,7 @@ class Follower_2(Bot):
         opp_log = self.opp_logs[str(opp_pos)]
 
         try:
-            if opp_log[-1] == opp_log[-2] and opp_log[-1] == 1:
+            if opp_log[-1] == opp_log[-2] == 1:
                 return 1
             else:
                 return -1
