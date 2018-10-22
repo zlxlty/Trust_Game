@@ -31,6 +31,6 @@ game_configs = {
     'each_game_num': 10,
     'update_player_num': 5,
     'mistake_prob': 0,
-    'total_rounds': 10,
+    'total_rounds': 20,
 
 }
